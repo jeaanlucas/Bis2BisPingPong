@@ -29,7 +29,7 @@ nos testes do algoritmo.
 
 ## Exemplos:
 Exemplos de chamada de função:
-saque("0:0"); // retorna "jogador a"
-saque("3:2"); // retorna "jogador b"
-saque("21:20"); // retorna "jogador a"
-saque("21:22"); // retorna "jogador b"
+  ● saque("0:0"); // retorna "jogador a"
+  ● saque("3:2"); // retorna "jogador b"
+  ● saque("21:20"); // retorna "jogador a"
+  ● saque("21:22"); // retorna "jogador b"
