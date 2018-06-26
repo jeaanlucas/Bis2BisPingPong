@@ -1,0 +1,64 @@
+<html charset="utf-8">
+  <head>
+  </head>
+
+  <body>
+  </body>
+
+  <script>
+    alert(verificaVezDeSacarOuFimDoJogo(prompt('Qual o placar atual do jogo?', '0:0')));
+
+    function verificaVezDeSacarOuFimDoJogo(placar) {
+      var placar = placar.split(':');
+      var rodadasTotais = parseInt(placar[0]) + parseInt(placar[1]);
+      var trocarVez = (rodadasTotais >= 40 ? 2 : 5);
+
+      var fimDoJogo = verificarFimDoJogo(parseInt(placar[0]), parseInt(placar[1]));
+
+      if (fimDoJogo !== '') {
+        return fimDoJogo;
+      }
+
+      return retornaJogadorQueVaiSacar(rodadasTotais, trocarVez);
+    }
+
+    function verificarFimDoJogo(pontuacaoJogadorA, pontuacaoJogadorB) {
+      if (placarMaiorQueVinte(pontuacaoJogadorA) && (calculaDiferenca(pontuacaoJogadorA, pontuacaoJogadorB) >= 2)) {
+        return 'O JOGADOR A venceu a partida, parabéns!';
+      }
+      else if (placarMaiorQueVinte(pontuacaoJogadorB)  && (calculaDiferenca(pontuacaoJogadorB, pontuacaoJogadorA) >= 2)) {
+        return 'O JOGADOR B venceu a partida, parabéns!';
+      }
+
+      return '';
+    }
+
+    function placarMaiorQueVinte(placar) {
+      return (placar > 20 ? true : false);
+    }
+
+    function calculaDiferenca(pontuacao1, pontuacao2) {
+      return pontuacao1 - pontuacao2;
+    }
+
+    function retornaJogadorQueVaiSacar(rodadasTotais, trocarVez) {
+      var contaRodada = 0;
+      var jogador = 'a';
+
+      for(var i=0; i<=rodadasTotais; i++) {
+        if ((contaRodada == trocarVez) && jogador == 'a') {
+          jogador = 'b';
+          contaRodada = 0;
+        }
+        else if ((contaRodada == trocarVez) && jogador == 'b') {
+          jogador = 'a';
+          contaRodada = 0;
+        }
+
+        contaRodada++;
+      }
+
+      return 'É a vez do JOGADOR ' + jogador.toUpperCase() + ' realizar o saque!';
+    }
+  </script>
+</html>
